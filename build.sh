@@ -15,6 +15,20 @@ fi
 
 echo -e "[+] Toolchain installed...\n"
 
+# Setup custom config symlinks for kernel build
+# The Image is built from common kernel, and msm-kernel builds modules
+# Both need access to the custom config to stay in sync
+if [ -f "${WDIR}/custom_defconfigs/custom.config" ]; then
+    if [ ! -f "${WDIR}/kernel_platform/common/custom.config" ]; then
+        echo -e "[+] Creating symlink for custom config in common/...\n"
+        ln -sf ../../custom_defconfigs/custom.config "${WDIR}/kernel_platform/common/custom.config"
+    fi
+    if [ ! -f "${WDIR}/kernel_platform/msm-kernel/custom.config" ]; then
+        echo -e "[+] Creating symlink for custom config in msm-kernel/...\n"
+        ln -sf ../../custom_defconfigs/custom.config "${WDIR}/kernel_platform/msm-kernel/custom.config"
+    fi
+fi
+
 #1. target config
 # pa1q_eur_open_user
 export MODEL="pa1q"
