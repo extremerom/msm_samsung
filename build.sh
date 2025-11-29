@@ -16,18 +16,18 @@ fi
 echo -e "[+] Toolchain installed...\n"
 
 #1. target config
-BUILD_TARGET=$1
-export MODEL=$(echo $BUILD_TARGET | cut -d'_' -f1)
+# pa1q_eur_open_user
+export MODEL="pa1q"
 export PROJECT_NAME=${MODEL}
-export REGION=$(echo $BUILD_TARGET | cut -d'_' -f2)
-export CARRIER=$(echo $BUILD_TARGET | cut -d'_' -f3)
-export TARGET_BUILD_VARIANT=$2
+export REGION="eur"
+export CARRIER="open"
+export TARGET_BUILD_VARIANT="user"
 		
 		
-#2. sm8650 common config
-CHIPSET_NAME=$3
+#2. sm8750 common config
+CHIPSET_NAME="sm8750"
 
-export ANDROID_BUILD_TOP=$(pwd)
+export ANDROID_BUILD_TOP=${WDIR}
 export TARGET_PRODUCT=perf
 export TARGET_BOARD_PLATFORM=gki
 
@@ -49,5 +49,9 @@ export KBUILD_EXT_MODULES="\
         "
 
 #3. build kernel
-cd ./kernel_platform/
-RECOMPILE_KERNEL=1 ./build/android/prepare_vendor.sh ${CHIPSET_NAME} ${TARGET_PRODUCT} gki
+build_kernel(){
+    cd ${WDIR}/kernel_platform
+    RECOMPILE_KERNEL=1 ./build/android/prepare_vendor.sh ${CHIPSET_NAME} ${TARGET_PRODUCT} gki
+}
+
+build_kernel
