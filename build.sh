@@ -48,10 +48,18 @@ export KBUILD_EXT_MODULES="\
         ../vendor/qcom/opensource/securemsm-kernel \
         "
 
+# custom build options
+export GKI_BUILDSCRIPT="./build/android/prepare_vendor.sh"
+export BUILD_OPTIONS=(
+    RECOMPILE_KERNEL=1
+    SKIP_MRPROPER=1
+)
+
 #3. build kernel
 build_kernel(){
-    cd ${WDIR}/kernel_platform
-    RECOMPILE_KERNEL=1 ./build/android/prepare_vendor.sh ${CHIPSET_NAME} ${TARGET_PRODUCT} gki
+    cd ${WDIR}/kernel_platform && \
+        env ${BUILD_OPTIONS[@]} ${GKI_BUILDSCRIPT} ${CHIPSET_NAME} ${TARGET_PRODUCT} gki && \
+        cd ${WDIR}
 }
 
 build_kernel
