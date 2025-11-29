@@ -24,8 +24,8 @@ export CARRIER="open"
 export TARGET_BUILD_VARIANT="user"
 		
 		
-#2. sm8750 common config
-CHIPSET_NAME="sm8750"
+#2. sun (sm8750) common config
+CHIPSET_NAME="sun"
 
 export ANDROID_BUILD_TOP=${WDIR}
 export TARGET_PRODUCT=perf
@@ -58,7 +58,7 @@ export BUILD_OPTIONS=(
 #3. build kernel
 build_kernel(){
     cd ${WDIR}/kernel_platform && \
-        env ${BUILD_OPTIONS[@]} ${GKI_BUILDSCRIPT} ${CHIPSET_NAME} ${TARGET_PRODUCT} gki && \
+        env ${BUILD_OPTIONS[@]} ${GKI_BUILDSCRIPT} ${CHIPSET_NAME} ${TARGET_PRODUCT} && \
         cd ${WDIR}
 }
 
