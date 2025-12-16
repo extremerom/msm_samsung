@@ -134,12 +134,13 @@ static void send_dsi_tcon_mdnie_register(struct samsung_display_driver_data *vdd
 
 	rc = ss_send_cmd(vdd, TX_MDNIE_TUNE);
 
-	if (!rc)
+	if (!rc) {
 #if IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER_V2)
 		ss_notify_queue_work(vdd, PANEL_EVENT_SCREEN_MODE_STATE_CHANGED);
 #elif IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER) /* deprecated, will be removed from qc_U */
 		ss_notify_queue_work(vdd, PANEL_EVENT_SCREEN_MODE_CHANGED);
 #endif
+	}
 }
 
 int get_hbm_ce_lux_idx(struct samsung_display_driver_data *vdd)

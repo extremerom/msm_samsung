@@ -5583,6 +5583,8 @@ int ss_panel_power_ctrl(struct samsung_display_driver_data *vdd, bool enable)
 int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, enum panel_notifier_event_state_t state)
 #elif IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER) /* deprecated, will be removed from qc_U */
 int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, enum panel_state state)
+#else
+int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, int state)
 #endif
 {
 	int i, voltage;
@@ -5599,6 +5601,8 @@ int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, 
 #elif IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER) /* deprecated, will be removed from qc_U */
 			voltage = (state == PANEL_LPM) ?
 				vdd->panel_regulator.vregs[i].from_lpm_v : vdd->panel_regulator.vregs[i].from_off_v;
+#else
+			voltage = vdd->panel_regulator.vregs[i].from_off_v;
 #endif
 
 			/* If voltage is 0, diable SSD */
