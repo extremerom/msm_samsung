@@ -8,9 +8,9 @@
 
 #include <linux/ioctl.h>
 
-#define MAILBOX_SIZE	0x100000	// size of sail mailbox region.
-#define OTA_SIZE	0x300000	// size of sail mailbox ota region.
-#define SAIL_MAILBOX_MAGIC	0x5A	// Unique magic number to make IOCTL calls.
+#define MAILBOX_SIZE	0x100000	/* size of sail mailbox region. */
+#define OTA_SIZE	0x300000	/* size of sail mailbox ota region. */
+#define SAIL_MAILBOX_MAGIC	0x5A	/* Unique magic number to make IOCTL calls. */
 
 /**
  * struct sailmb_client_data - Specifies client data passed from userspace while
