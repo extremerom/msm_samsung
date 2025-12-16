@@ -6,7 +6,7 @@ export WDIR="$(dirname $(readlink -f $0))" && cd "$WDIR"
 if [ ! -d "${WDIR}/kernel_platform/prebuilts" ]; then
     echo -e "[+] Downloading and installing Toolchain...\n"
     sudo apt install rsync p7zip-full curl tar -y
-    curl -LO --progress-bar https://www.dropbox.com/scl/fi/mugzq17bjgonj9jqsvsq1/toolchain.tar.gz?rlkey=ebchnfs8pmezl92kzlg9clrmg&st=c9rh3z1v&dl=1
+    curl -LO --progress-bar "https://www.dropbox.com/scl/fi/mugzq17bjgonj9jqsvsq1/toolchain.tar.gz?rlkey=ebchnfs8pmezl92kzlg9clrmg&st=rdtael0w&dl=1"
     tar -xzf toolchain.tar.gz && rm toolchain.tar.gz
     chmod -R +x "${WDIR}/kernel_platform/prebuilts"    
 fi
