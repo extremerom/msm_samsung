@@ -5581,11 +5581,10 @@ int ss_panel_power_ctrl(struct samsung_display_driver_data *vdd, bool enable)
 
 #if IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER_V2)
 int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, enum panel_notifier_event_state_t state)
-{
 #elif IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER) /* deprecated, will be removed from qc_U */
 int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, enum panel_state state)
-{
 #endif
+{
 	int i, voltage;
 	int rc = 0;
 	bool enable;
