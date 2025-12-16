@@ -72,12 +72,12 @@
 #include <linux/android_vendor.h>
 #include <linux/android_kabi.h>
 
-// SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA {
+/* SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA { */
 #ifdef CONFIG_KNOX_NCM
 #define NAP_PROCESS_NAME_LEN	128
 #define NAP_DOMAIN_NAME_LEN		255
 #endif
-// SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA }
+/* SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA } */
 
 /*
  * This structure really needs to be cleaned up.
@@ -255,7 +255,7 @@ struct sock_common {
 
 struct bpf_local_storage;
 
-// SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA {
+/* SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA { */
 #ifdef CONFIG_KNOX_NCM
 struct sock_npa_vendor_data {
 	uid_t	knox_uid;
@@ -272,7 +272,7 @@ struct sock_npa_vendor_data {
 
 #define SOCK_NPA_VENDOR_DATA_GET(sock) ((struct sock_npa_vendor_data*)((sock)->android_oem_data1))
 #endif
-// SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA }
+/* SEC_PRODUCT_FEATURE_KNOX_SUPPORT_NPA } */
 
 /**
   *	struct sock - network layer representation of sockets
