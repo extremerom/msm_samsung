@@ -2,17 +2,6 @@
 
 export WDIR="$(dirname $(readlink -f $0))" && cd "$WDIR"
 
-# Download and install Toolchain
-if [ ! -d "${WDIR}/kernel_platform/prebuilts" ]; then
-    echo -e "[+] Downloading and installing Toolchain...\n"
-    sudo apt install rsync p7zip-full curl tar -y
-    curl -L --progress-bar -o "toolchain.tar.gz" "https://www.dropbox.com/scl/fi/mugzq17bjgonj9jqsvsq1/toolchain.tar.gz?rlkey=ebchnfs8pmezl92kzlg9clrmg&st=rdtael0w&dl=1"
-    tar -xzf toolchain.tar.gz && rm toolchain.tar.gz
-    chmod -R +x "${WDIR}/kernel_platform/prebuilts"    
-fi
-
-echo -e "[+] Toolchain installed...\n"
-
 # Setup custom config symlinks for kernel build
 # The Image is built from common kernel, and msm-kernel builds modules
 # Both need access to the custom config to stay in sync
