@@ -19,7 +19,7 @@ fi
 #1. target config
 # pa1q_eur_open_user
 export MODEL="dm2q"
-export PROJECT_NAME=${MODEL}
+export PROJECT_NAME="dm2q"
 export REGION="eur"
 export CARRIER="openx"
 export TARGET_BUILD_VARIANT="user"
@@ -32,8 +32,8 @@ export ANDROID_BUILD_TOP=${WDIR}
 export TARGET_PRODUCT=gki
 export TARGET_BOARD_PLATFORM=gki
 
-export ANDROID_PRODUCT_OUT=${ANDROID_BUILD_TOP}/out/target/product/${MODEL}
-export OUT_DIR=${ANDROID_BUILD_TOP}/out/msm-${CHIPSET_NAME}-${CHIPSET_NAME}-${TARGET_PRODUCT}
+export ANDROID_PRODUCT_OUT=${ANDROID_BUILD_TOP}/out/target/product/dm2q
+export OUT_DIR=${ANDROID_BUILD_TOP}/out/msm-kalama-kalama-gki
 
 # for Lcd(techpack) driver build
 export KBUILD_EXTRA_SYMBOLS="${ANDROID_BUILD_TOP}/out/vendor/qcom/opensource/mmrm-driver/Module.symvers \
@@ -61,6 +61,8 @@ export GKI_BUILDSCRIPT="./build/android/prepare_vendor.sh"
 export BUILD_OPTIONS=(
     RECOMPILE_KERNEL=1
     SKIP_MRPROPER=1
+	KMI_SYMBOL_LIST_STRICT_MODE=0
+	KMI_ENFORCED=0	
 )
 
 #3. build kernel
