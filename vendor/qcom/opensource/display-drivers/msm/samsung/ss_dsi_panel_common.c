@@ -5579,6 +5579,7 @@ int ss_panel_power_ctrl(struct samsung_display_driver_data *vdd, bool enable)
 	return 0;
 }
 
+#if IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER_V2) || IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER)
 #if IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER_V2)
 int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, enum panel_notifier_event_state_t state)
 #elif IS_ENABLED(CONFIG_SEC_PANEL_NOTIFIER) /* deprecated, will be removed from qc_U */
@@ -5614,6 +5615,7 @@ int ss_panel_regulator_short_detection(struct samsung_display_driver_data *vdd, 
 
 	return 0;
 }
+#endif
 
 static void ss_panel_parse_regulator(struct samsung_display_driver_data *vdd, struct device_node *panel_node)
 {
