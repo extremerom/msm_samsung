@@ -937,6 +937,11 @@ if [[ "${KL_DIR}" == "common" ]] && [[ "${KMI_SYMBOL_LIST_STRICT_MODE}" = "1" ]]
        libabigail: $(abidw --version)
   -->" >> ${DIST_DIR}/$f
   done
+
+  ref_abi="${KERNEL_DIR}/${ABI_DEFINITION}"
+
+  cp "$ref_abi" "${DIST_DIR}/${abi_out_file}"
+  cp "$ref_abi" "${DIST_DIR}/${full_abi_out_file}"
   
   ln -sf ${abi_out_file} ${DIST_DIR}/abi.xml
   ln -sf ${full_abi_out_file} ${DIST_DIR}/abi-full.xml
