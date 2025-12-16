@@ -18,7 +18,9 @@ if [ "${pahole_ver}" -ge "121" ]; then
 fi
 
 if [ "${pahole_ver}" -ge "124" ]; then
+	# pahole 1.24+ can skip encoding DW_TAG_decl_tag entries to avoid DW_TAG_label errors
 	extra_paholeopt="${extra_paholeopt} --skip_encoding_btf_enum64"
+	extra_paholeopt="${extra_paholeopt} --skip_encoding_btf_decl_tag"
 fi
 if [ "${pahole_ver}" -ge "125" ]; then
 	extra_paholeopt="${extra_paholeopt} --skip_encoding_btf_inconsistent_proto --btf_gen_optimized"
