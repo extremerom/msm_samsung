@@ -34,4 +34,4 @@ struct xt_domainfilter_match_info {
 	__u8 flags;
 };
 
-#endif //_XT_DOMAINFILTER_MATCH_H
+#endif /* _XT_DOMAINFILTER_MATCH_H */
